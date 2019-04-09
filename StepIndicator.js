@@ -260,18 +260,15 @@ export default class StepIndicator extends Component {
           label
         );
 
-      if (typeof label === 'string') {
-        return (
-          <TouchableWithoutFeedback
-            style={styles.stepLabelItem}
-            key={index}
-            onPress={() => this.stepPressed(index)}
-          >
-            <View style={styles.stepLabelItem}>{toRenderLabel}</View>
-          </TouchableWithoutFeedback>
-        );
-      }
-      return label;
+      return (
+        <TouchableWithoutFeedback
+          style={styles.stepLabelItem}
+          key={index}
+          onPress={() => this.stepPressed(index)}
+        >
+          <View style={styles.stepLabelItem}>{toRenderLabel}</View>
+        </TouchableWithoutFeedback>
+      );
     });
 
     return (
