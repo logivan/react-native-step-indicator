@@ -245,6 +245,21 @@ export default class StepIndicator extends Component {
           ? { color: this.state.customStyles.currentStepLabelColor }
           : { color: this.state.customStyles.labelColor };
 
+      const toRenderLabel =
+        typeof label === 'string' ? (
+          <Text
+            style={[
+              styles.stepLabel,
+              selectedStepLabelStyle,
+              { fontSize: this.state.customStyles.labelSize }
+            ]}
+          >
+            {label}
+          </Text>
+        ) : (
+          label
+        );
+
       if (typeof label === 'string') {
         return (
           <TouchableWithoutFeedback
@@ -252,17 +267,7 @@ export default class StepIndicator extends Component {
             key={index}
             onPress={() => this.stepPressed(index)}
           >
-            <View style={styles.stepLabelItem}>
-              <Text
-                style={[
-                  styles.stepLabel,
-                  selectedStepLabelStyle,
-                  { fontSize: this.state.customStyles.labelSize }
-                ]}
-              >
-                {label}
-              </Text>
-            </View>
+            <View style={styles.stepLabelItem}>{toRenderLabel}</View>
           </TouchableWithoutFeedback>
         );
       }
